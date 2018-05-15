@@ -1,0 +1,10 @@
+server:
+  port: 8085
+  servlet:
+    context-path: /springbootdemo
+age: 18
+cupSize: b
+content: "age:20,cupSize:b"
+girl:
+  age: 22
+  cupSize: d

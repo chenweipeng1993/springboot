@@ -1,0 +1,14 @@
+spring:
+  profiles:
+    active: dev
+  datasource:
+    data-username: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/girlDB
+    username: root
+    password: 123456
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    #需要mysql的数据库也是在为InnoDB
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
