@@ -1,0 +1,7 @@
+spring:
+  mvc:
+    view:
+      suffix: .html #设置html的文件后缀
+server:
+  servlet:
+    context-path: /qixi #设置上下文

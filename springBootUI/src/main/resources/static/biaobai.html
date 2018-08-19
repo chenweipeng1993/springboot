@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--
+        	作者：1091236678@qq.com
+        	时间：2016-01-23
+        	描述：
+        	声明当前页面的编码集：charset=gbk,gb2312(中文编码),utf-8国际编码
+        -->
+		<meta charset="utf-8" />
+		<meta name="keywords" content="关键词，关键字" />
+		<meta name="description" content="" />
+		<title>浪漫程序-陈伟鹏O(∩_∩)O哈哈~</title>
+		
+		<!--CSS JS-->
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			body{background: url("img/b1j.jpg"); background-size: cover;}
+			/*S box*/
+			.box{
+				width: 250px;height: 250px;
+				/*background: red ;*/
+				margin: 200px auto 0;/*上 左右 下*/
+				perspective: 800px;
+			}
+			.box .pic{
+				width: 240px;height: 240px;
+				/*background: #eee640;*/
+				position: relative;
+				/*搭建3d环境*/
+				transform-style: preserve-3d;
+				/*transform: rotateX(-15deg);*/
+				/*4s转完一个动画
+				 * linear匀速
+				 * infinite无线转-但是有停顿*/
+				-webkit-animation: slide 12s linear infinite;
+			}
+			.box .pic ul li{
+				list-style: none;/*清楚ul-li的效果-小圆点*/
+				position: absolute;
+				left: 0;
+				right: 0;
+			}
+			/*E box*/
+			/*S xin*/
+			.xin{position: absolute;-webkit-animation: xin 12s linear infinite;}
+			.xin1{position: absolute;-webkit-animation: xin1 12s linear infinite;}
+			/*E xin*/
+			/*S text*/
+			#text{width: 520px;height: 130px;  margin: 0 auto; 
+			color: #951dc9; font-size: 20px; font-family: "楷体"; font-weight: 600;}
+			/*E text*/
+			@-webkit-keyframes slide{
+				/*帧*/
+				from{transform: rotateY(0deg);}
+				to{transform: rotateY(360deg);}
+			}
+			
+			@-webkit-keyframes xin{
+				/*自定义动画*/
+				/*opacity 淡入淡出 1 不透明 0 透明*/
+				0%{bottom:10%;left: 2%; opacity: 1;}
+				20%{bottom:50%;left: 22%; opacity: 0;}
+				40%{bottom:75%;left: 42%; opacity: 1;}
+				60%{bottom:50%;left: 62%; opacity: 0;}
+				80%{bottom:20%;left: 82%; opacity: 1;}
+				100%{bottom:0%;left: 50%; opacity: 0;}
+			}
+			@-webkit-keyframes xin1{
+				/*自定义动画*/
+				/*opacity 淡入淡出 1 不透明 0 透明*/
+				0%{top:10%;right: 2%; opacity: 1;}
+				20%{top:50%;right: 22%; opacity: 0;}
+				40%{top:75%;right: 42%; opacity: 1;}
+				60%{top:50%;right: 62%; opacity: 0;}
+				80%{top:20%;right: 82%; opacity: 1;}
+				100%{top:0%;right: 50%; opacity: 0;}
+			}
+			/*代码简洁用JQuery来处理*/
+			/*.box .pic ul li:nth-child(1){
+				transform: rotateY(0deg) translateZ(216px) ;
+			}
+			.box .pic ul li:nth-child(2){
+				transform: rotateY(60deg)  translateZ(216px);
+			}
+			.box .pic ul li:nth-child(3){
+				transform: rotateY(120deg)  translateZ(216px);
+			}
+			.box .pic ul li:nth-child(4){
+				transform: rotateY(240deg)  translateZ(216px);
+			}
+			.box .pic ul li:nth-child(5){
+				transform: rotateY(300deg)  translateZ(216px);
+			}
+			.box .pic ul li:nth-child(6){
+				transform: rotateY(360deg)  translateZ(216px);
+			}*/
+			
+			/*div{width: 100px; height: 100px; background: red; margin: 10px;}*/
+		</style>
+	</head>
+	<body>
+		<!--S box-->
+		<div class="box">
+			<div class="pic"><!--主要用于3D的旋转-->
+				<ul>
+					<li>
+						<img src="img/1.gif" width="240" height="240" alt="爱心1" title="爱心1"/>
+					</li>
+					<li>
+						<img src="img/2.gif" width="240" height="240" alt="爱心2" title="爱心2"/>
+					</li>
+					<li>
+						<img src="img/3.gif" width="240" height="240" alt="爱心3" title="爱心3"/>
+					</li>
+					<li>
+						<img src="img/4.gif" width="240" height="240" alt="爱心4" title="爱心4"/>
+					</li>
+					<li>
+						<img src="img/5.gif" width="240" height="240" alt="爱心5" title="爱心5"/>
+					</li>
+					<li>
+						<img src="img/6.gif" width="240" height="240" alt="爱心6" title="爱心6"/>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!--E box-->
+		<!--S xin-->
+		<div class="xin">
+			<img src="img/xin.png" />
+		</div>
+		<div class="xin1">
+			<img src="img/xin.png" />
+		</div>
+		<!--E xin-->
+		<!--TS text-->
+		<div id="text">
+		</div>
+		<!--E text-->
+		<!--S music-->
+		<embed src="mp3/咱们结婚吧.mp3" autostart="true" loop="true" hidden="true" ></embed>
+		<!--E music-->
+		<script type="text/javascript" src="js/jquery-2.1.3.js" ></script>
+		<script type="text/javascript">
+			$(".pic ul li").each(function(i){//省略上面重复的代码-一个图片就要重复一遍
+				
+				var Deg = 360/$(".pic ul li").size();
+				
+				$(this).css({
+					"transform":"rotateY("+Deg*i+"deg) translateZ(216px)"
+				});
+			});
+			window.onload = function autoPlay(){
+				/*创建数组-记录文字*/
+				var b = ['不是在最美好的时光遇见你，而是遇见你以后都是最美好的时光！']
+				var str = b.join(""),i=0,arr=str.split('');
+//				alert(str);
+//				alert(arr);
+				var length = str.length-1;
+//				alert(length);
+				var ms_stop =setInterval(function(){
+					if(i>length){
+						i=0;
+						document.getElementById("text").innerHTML='';
+					}
+					document.getElementById("text").innerHTML=
+					document.getElementById("text").innerHTML+arr[i];
+					i++;
+				},150)
+			}
+		</script>
+	</body>
+</html>
